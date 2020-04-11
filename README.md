@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Live Preview
 
-You can [view the app live here] (https://logintemp.herokuapp.com/)
+You can [view the app live here](https://logintemp.herokuapp.com/)
 
 ## Tech Stack
 
