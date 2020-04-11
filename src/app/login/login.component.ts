@@ -27,4 +27,17 @@ export class LoginComponent  {
    });
  }
 
+ signInWithTwitter() {
+  return this.authService.signInWithTwitter().then((result) => {
+    this.errorMsg=null;
+     console.log(result);
+     this.router.navigate(['/']);
+   }).catch((err) => {
+     this.errorMsg = err.message;
+     console.log(err);
+   }
+  )
+}
+
+
 }

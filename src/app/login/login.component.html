@@ -9,6 +9,8 @@
     <input ngModel #pass="ngModel" name="password" type="password" class="form-control" placeholder="Password" required minlength="4">
     <div class="alert alert-danger" *ngIf="pass.touched && pass.errors?.required">Password is required!</div>
     <div class="alert alert-danger" *ngIf="pass.touched && pass.errors?.minlength">Please, enter atleast 4 character!</div>
-    <button class="btn btn-primary" [disabled]="email.invalid || pass.invalid">Login</button>
+    <button class="btn btn-primary" placement="top" ngbTooltip="login" [disabled]="email.invalid || pass.invalid">Login</button>
 </form>
 <div class="alert alert-danger" *ngIf="errorMsg != null">{{ errorMsg }}</div>
+
+<button class="btn btn-primary" placement="top" (click)="signInWithTwitter()" ngbTooltip="Twitter login">Login with Twitter</button>
