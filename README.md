@@ -7,14 +7,28 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Live Preview
 
-You can ![view the app live here](https://logintemp.herokuapp.com/)
-## Code scaffolding
+You can [view the app live here] (https://logintemp.herokuapp.com/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tech Stack
 
-## Build
+* Angular
+* Firebase
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+.
 
 ## Running unit tests
 
