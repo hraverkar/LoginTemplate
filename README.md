@@ -1,7 +1,7 @@
 # Login Template
 
-![Login](link-to-image)
-
+![Login](https://github.com/hraverkar/LoginTemplate/blob/master/src/assets/login.png)
+![Signup](https://github.com/hraverkar/LoginTemplate/blob/master/src/assets/signup.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
