@@ -50,4 +50,17 @@ signInWithGithub(){
    }
   )
 }
+
+signInWithGoogle(){
+  return this.authService.signInWithGoogle().then((result) => {
+    this.errorMsg=null;
+     console.log(result);
+     this.router.navigate(['/']);
+   }).catch((err) => {
+     this.errorMsg = err.message;
+     console.log(err);
+   }
+  )
+}
+
 }

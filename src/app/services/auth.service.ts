@@ -40,4 +40,11 @@ export class AuthService {
     );
   }
 
+  signInWithGoogle(){
+    return this.angularFireAuth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    );
+  }
+
+
 }
