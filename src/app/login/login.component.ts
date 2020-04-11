@@ -39,5 +39,15 @@ export class LoginComponent  {
   )
 }
 
-
+signInWithGithub(){
+  return this.authService.signInWithGithub().then((result) => {
+    this.errorMsg=null;
+     console.log(result);
+     this.router.navigate(['/']);
+   }).catch((err) => {
+     this.errorMsg = err.message;
+     console.log(err);
+   }
+  )
+}
 }

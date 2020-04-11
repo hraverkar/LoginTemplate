@@ -15,9 +15,9 @@
     <div class="alert alert-danger" *ngIf="confirmPass.touched && confirmPass.errors?.required">Confirm password required!</div>
     <div class="alert alert-danger" *ngIf="confirmPass.touched && pass.value != confirmPass.value">Confirm Password are not equal to password!</div>
 
-    <textarea ngModel #address="ngModel" name="address" class="form-control" placeholder="Address" required></textarea>
+    <input ngModel #address="ngModel" name="address" class="form-control" placeholder="Address" required>
     <div class="alert alert-danger" *ngIf="address.touched && address.errors?.required">Address is required!</div>
 
-    <button class="btn btn-primary" [disabled]="f.invalid || pass.value != confirmPass.value">Create Account</button>
+    <button class="btn btn-primary" placement="top" ngbTooltip="Signup" [disabled]="f.invalid || pass.value != confirmPass.value">Create Account</button>
 </form>
 <div class="alert alert-danger" *ngIf="errorMsg != null">{{ errorMsg }}</div>

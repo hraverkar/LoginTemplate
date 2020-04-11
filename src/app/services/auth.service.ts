@@ -34,4 +34,10 @@ export class AuthService {
      );
   }
 
+  signInWithGithub(){
+    return this.angularFireAuth.signInWithPopup(
+      new firebase.auth.GithubAuthProvider()
+    );
+  }
+
 }
