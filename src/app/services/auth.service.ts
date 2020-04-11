@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
+import * as firebase from 'firebase/app';
 
 
 @Injectable({
@@ -11,7 +12,8 @@ export class AuthService {
   public userId:string;
   
   constructor(private angularFireAuth:AngularFireAuth) {
-    this.user = angularFireAuth.user;
+    //this.user = angularFireAuth.user;
+    this.user = angularFireAuth.authState;
    }
 
    signup(email,password){
@@ -26,5 +28,10 @@ export class AuthService {
      return this.angularFireAuth.signOut();
    }
 
+   signInWithTwitter() {
+     return this.angularFireAuth.signInWithPopup(
+       new firebase.auth.TwitterAuthProvider()
+     );
+  }
 
 }
