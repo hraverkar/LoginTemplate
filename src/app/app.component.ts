@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { transition, trigger, query, group, style, animate } from '@angular/animations';
+import {
+  transition,
+  trigger,
+  query,
+  group,
+  style,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -7,48 +14,60 @@ import { transition, trigger, query, group, style, animate } from '@angular/anim
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('router', [
-      transition('0 => 1, 0 => 2, 1 => 2, 3 => 4', [
+      transition('0 => 1, 0 => 2, 1 => 2, 3 => 4, 3=>5,4=>5,5=>3,5=>4', [
         group([
           query(':enter', [
             style({
-              transform: 'translateX(100%)'
+              transform: 'translateX(100%)',
             }),
-            animate(500, style({
-              transform: 'translateX(0)'
-            }))
+            animate(
+              500,
+              style({
+                transform: 'translateX(0)',
+              })
+            ),
           ]),
           query(':leave', [
             style({
-              transform: 'translateX(0)'
+              transform: 'translateX(0)',
             }),
-            animate(500, style({
-              transform: 'translateX(-100%)'
-            }))
-          ])
-        ])
+            animate(
+              500,
+              style({
+                transform: 'translateX(-100%)',
+              })
+            ),
+          ]),
+        ]),
       ]),
-      transition('1 => 0, 2 => 0, 2 => 1, 4 => 3', [
+      transition('1 => 0, 2 => 0, 2 => 1, 4 => 3,  3=>5,4=>5,5=>3,5=>4', [
         group([
           query(':enter', [
             style({
-              transform: 'translateX(0)'
+              transform: 'translateX(0)',
             }),
-            animate(500, style({
-              transform: 'translateX(100%)'
-            }))
+            animate(
+              500,
+              style({
+                transform: 'translateX(100%)',
+              })
+            ),
           ]),
           query(':leave', [
             style({
-              transform: 'translateX(-100%)'
+              transform: 'translateX(-100%)',
             }),
-            animate(500, style({
-              transform: 'translateX(0)'
-            }))
-          ])
-        ])
-      ])
-    ])
-  ]
+            animate(
+              500,
+              style({
+                transform: 'translateX(0)',
+              })
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+  ],
 })
 export class AppComponent {
   title = 'test';
