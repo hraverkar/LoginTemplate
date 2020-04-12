@@ -51,5 +51,6 @@ export class AuthService {
       new firebase.auth.FacebookAuthProvider()
     );
   }
+  
 
 }
