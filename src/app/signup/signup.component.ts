@@ -17,16 +17,13 @@ export class SignupComponent {
     let data:User = f.value;
     this.authService.signup(data.email,data.password).then((result) => {
       this.errorMsg=null;
-
-
       this.userServices.addNewUser(result.user.uid, data.name,data.address).then((result)=>{
         this.router.navigate(['/'])
       })
       .catch(err=>{
         console.log('register user data (firestore)', err.message);
       })
-    }).catch((err) => {
-      
+    }).catch((err) => {    
       this.errorMsg = err.message;
     });
   }
