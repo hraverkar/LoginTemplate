@@ -22,6 +22,11 @@
               <li class="nav-item" *ngIf="!isUserLogin">
                   <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
               </li>
+
+                <li class="nav-item" *ngIf="!isUserLogin">
+                  <a class="nav-link" routerLink="/phoneLogin" routerLinkActive="active">PhoneLogin</a>
+              </li>
+
               <li class="nav-item" *ngIf="isUserLogin">
                   <button class="btn btn-danger" (click)="logout()">Logout</button>
               </li>
