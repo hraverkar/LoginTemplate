@@ -1,24 +1,20 @@
-<h2 class="text-center">Sign In with Your Phone Number</h2>
-  <label for="phone">Phone Number</label><br>
-  <input type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="91"    maxlength="2">
-  <input type="text" [(ngModel)]="phoneNumber.firsthalf" class="input" placeholder="9743"  maxlength="4">
-  <input type="text" [(ngModel)]="phoneNumber.Secondhalf"  class="input" placeholder="420543"  maxlength="6">
+<h2 class="text-center">Mobile Login</h2>
+<form #f="ngForm" (ngSubmit)="sendLoginCode(f)">
+    <input ngModel #country="ngModel" name="country" type="text" class="form-control" placeholder="Country Code" maxlength="2" required>
+    <div class="alert alert-danger" *ngIf="country.touched && country.invalid">Country Code required!</div>
+    <input ngModel #firsthalf="ngModel" name="firsthalf" type="text" class="form-control" placeholder="Mobile No." maxlength="4" required>
+    <div class="alert alert-danger" *ngIf="firsthalf.touched && firsthalf.invalid">Mobile Number is required!</div>
+    <input ngModel #Secondhalf="ngModel" name="Secondhalf" type="text" class="form-control" placeholder="Mobile No." maxlength="6" required>
+    <div class="alert alert-danger" *ngIf="Secondhalf.touched && Secondhalf.invalid">Mobile Number is required!</div>
+    <div id="recaptcha-container"></div>
+    <button class="btn btn-primary" placement="top" ngbTooltip="Login" [disabled]="f.invalid">Login</button>
+</form>
   
-  <div id="recaptcha-container"></div>
-
-  <button (click)="sendLoginCode()">SMS Text Login Code</button>
-
-  <div *ngIf="windowRef.confirmationResult">
+<div *ngIf="windowRef.confirmationResult">
     <hr>
     <label for="code">Enter your Verification Code Here</label><br>
     <input type="text" name="code" [(ngModel)]="verificationCode">
 
-    <button (click)="varifyLoginCode()">Verify</button>
+    <button (click)="verifyLoginCode()">Verify</button>
   </div>
-
-<div *ngIf="user">
-  You have successfully logged in with your phone number!
-
-  UserId: {{ user?.uid }}
-
-</div>
+  <div class="alert alert-danger" *ngIf="errorMsg != null">{{ errorMsg }}</div>

@@ -1,18 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { WindowService } from '../services/window.service';
 import * as firebase from 'firebase';
-
-export class PhoneNumber {
-  country: string;
-  firsthalf:string;
-  Secondhalf:string;
-
-
-  get e164(){
-    const num =this.country + this.firsthalf + this.Secondhalf;
-    return `+${num}`;
-  }
-}
+import { NgForm } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-phone-login',
@@ -21,10 +12,10 @@ export class PhoneNumber {
 })
 export class PhoneLoginComponent implements OnInit {
   windowRef:any;
-  phoneNumber = new PhoneNumber();
   user:any;
   verificationCode: string
-  constructor(private winService:WindowService) { }
+  errorMsg:string;
+  constructor(private winService:WindowService, private userServices: UserService, private router:Router) { }
 
   ngOnInit(): void {
     this.windowRef = this.winService.windowRef;
@@ -32,18 +23,28 @@ export class PhoneLoginComponent implements OnInit {
     this.windowRef.recaptchaVerifier.render();
   }
 
-  sendLoginCode(){
+  sendLoginCode(f:NgForm){
+    let data:any = f.value;
     const appVerifier = this.windowRef.recaptchaVerifier;
-    const num = this.phoneNumber.e164;
+    const num = this.gete164(data);
     firebase.auth().signInWithPhoneNumber(num,appVerifier).then((result)=>{
       this.windowRef.confirmationResult = result;
     }).catch(error=>console.log(error));
   }
 
-  varifyLoginCode(){
+  gete164(data){
+    const num =data.country + data.firsthalf + data.Secondhalf;
+    return `+${num}`;
+  }
+
+  verifyLoginCode(){
     this.windowRef.confirmationResult.confirm(this.verificationCode)
     .then((result)=>{
-      this.user = result.user;
-    }).catch(error=>console.log(error,"Incorrect code entered !! "));
+      this.errorMsg=null;
+        this.router.navigate(['/'])
+    }).catch((err) => {    
+      this.errorMsg = err.message;
+     console.log(err);
+    });
   }
 }
