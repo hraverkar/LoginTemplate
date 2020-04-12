@@ -46,5 +46,10 @@ export class AuthService {
     );
   }
 
+  signInWithFacebook(){
+    return this.angularFireAuth.signInWithPopup(
+      new firebase.auth.FacebookAuthProvider()
+    );
+  }
 
 }

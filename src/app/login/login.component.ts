@@ -63,4 +63,14 @@ signInWithGoogle(){
   )
 }
 
+signInWithFacebook(){
+  return this.authService.signInWithFacebook().then((result) => {
+   this.errorMsg=null;
+     console.log(result);
+     this.router.navigate(['/']);
+   }).catch((err) => {
+     this.errorMsg = err.message;
+     console.log(err);
+   });
+  }
 }
