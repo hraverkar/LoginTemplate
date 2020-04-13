@@ -1,20 +1,24 @@
 <h2 class="text-center">Mobile Login</h2>
 <form #f="ngForm" (ngSubmit)="sendLoginCode(f)">
-    <input ngModel #country="ngModel" name="country" type="text" class="form-control" placeholder="Country Code" maxlength="2" required>
+    <input ngModel #country="ngModel" name="country" type="text" class="form-control" placeholder="Country Code"
+        maxlength="2" required>
     <div class="alert alert-danger" *ngIf="country.touched && country.invalid">Country Code required!</div>
-    <input ngModel #firsthalf="ngModel" name="firsthalf" type="text" class="form-control" placeholder="Mobile No." maxlength="4" required>
+    <input ngModel #firsthalf="ngModel" name="firsthalf" type="text" class="form-control" placeholder="Mobile No."
+        maxlength="4" required>
     <div class="alert alert-danger" *ngIf="firsthalf.touched && firsthalf.invalid">Mobile Number is required!</div>
-    <input ngModel #Secondhalf="ngModel" name="Secondhalf" type="text" class="form-control" placeholder="Mobile No." maxlength="6" required>
+    <input ngModel #Secondhalf="ngModel" name="Secondhalf" type="text" class="form-control" placeholder="Mobile No."
+        maxlength="6" required>
     <div class="alert alert-danger" *ngIf="Secondhalf.touched && Secondhalf.invalid">Mobile Number is required!</div>
     <div id="recaptcha-container"></div>
-    <button class="btn btn-primary" placement="top" ngbTooltip="Login" [disabled]="f.invalid">Login</button>
-</form>
-  
-<div *ngIf="windowRef.confirmationResult">
-    <hr>
-    <label for="code">Enter your Verification Code Here</label><br>
-    <input type="text" name="code" [(ngModel)]="verificationCode">
+    <button class="btn btn-primary" placement="top" ngbTooltip="Login" [disabled]="f.invalid">Sent Text Message</button>
 
-    <button (click)="verifyLoginCode()">Verify</button>
-  </div>
-  <div class="alert alert-danger" *ngIf="errorMsg != null">{{ errorMsg }}</div>
+    <div *ngIf="windowRef.confirmationResult">
+        <hr>
+        <label for="code">Enter your Verification Code Here</label><br>
+        <input type="text" name="code" [(ngModel)]="verificationCode">
+        <button class="btn btn-primary" placement="top" ngbTooltip="Login" (click)="verifyLoginCode()">Verify</button>
+    </div>
+</form>
+
+
+<div class="alert alert-danger" *ngIf="errorMsg != null">{{ errorMsg }}</div>
